@@ -17,7 +17,7 @@ namespace ContosoUniversity.Controllers
         {
             return View(await _context.Students.ToListAsync());
         }
-        /*
+        
         public async Task<IActionResult> Index(
             string sortOrder,
             string currentFilter, 
@@ -67,9 +67,9 @@ namespace ContosoUniversity.Controllers
                     break;
             }
             int pageSize = 3;
-            return View(await _context.Students.ToListAsync())
+            return View(await _context.Students.ToListAsync());
             //return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(),pageNumber ?? 1,pageSize));
         }
-        */
+        
     }
 }
