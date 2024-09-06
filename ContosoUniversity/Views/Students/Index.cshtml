@@ -1,29 +1,28 @@
 ﻿@model IEnumerable<ContosoUniversity.Models.Student>
-@{
+    @{
     ViewData["Title"] = "Õpilased";
-
-}
-<h1>Õpilaste Index</h1>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(Model => Model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(Model => Model.FirstMidName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(Model => Model.EnrollmentDate)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(var item in Model)
+    }
+    <h1>Õpilaste Index</h1>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(Model => Model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(Model => Model.FirstMidName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(Model => Model.EnrollmentDate)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
         {
             <tr>
                 <td>
@@ -39,8 +38,14 @@
                     <a asp-action="Edit" asp-route-id="@item.ID">Edit</a>
                     <a asp-action="Details" asp-route-id="@item.ID">Details</a>
                     <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+
+                    <!-- Clone nupp vormis -->
+                    <form asp-action="Clone" method="post" style="display:inline">
+                        <input type="hidden" name="id" value="@item.ID" />
+                        <button type="submit" class="btn btn-sm btn-primary">Clone</button>
+                    </form>
                 </td>
             </tr>
         }
-    </tbody>
-</table>
+        </tbody>
+    </table>
