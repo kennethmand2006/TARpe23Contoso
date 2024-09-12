@@ -189,6 +189,35 @@ namespace ContosoUniversity.Controllers
         }
 
 
+
+
+
+
+        // POST: Students/Clone/5
+        [HttpPost]
+        public async Task<IActionResult> Clone(int id)
+        {
+            var student = await _context.Students.FindAsync(id);
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            // Loome uue õpilase objekti olemasoleva põhjal
+            var newStudent = new Student
+            {
+                FirstMidName = student.FirstMidName,
+                LastName = student.LastName,
+                EnrollmentDate = student.EnrollmentDate
+            };
+
+            _context.Students.Add(newStudent);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
         private bool StudentExists(int id)
         {
             return _context.Students.Any(e => e.ID == id);
