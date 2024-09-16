@@ -139,7 +139,6 @@ namespace ContosoUniversity.Controllers
 
             return View(student);
         }
-
         // GET: Students/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -189,10 +188,10 @@ namespace ContosoUniversity.Controllers
             return View(student);
         }
 
-        private bool StudentExists(int id)
-        {
-            return _context.Students.Any(e => e.ID == id);
-        }
+
+
+
+
 
         // POST: Students/Clone/5
         [HttpPost]
@@ -217,5 +216,12 @@ namespace ContosoUniversity.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+
+        private bool StudentExists(int id)
+        {
+            return _context.Students.Any(e => e.ID == id);
+        }
+
     }
 }
