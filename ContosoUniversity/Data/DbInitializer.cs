@@ -7,18 +7,20 @@ namespace ContosoUniversity.Data
         public static void Initialize(SchoolContext context)
         {
             //
-            context.Database.EnsureCreated();
-            
-            //
+            /*  context.Database.EnsureCreated();
+
+              //
+             */
             if (context.Students.Any())
             {
                 return;
             }
+            context.Students.AddRange());
 
             //õpilaste object
-            var students = new Student[]
+           var students = new Student[]
             {
-                new Student{FirstMidName="Mel",LastName="Kosk",EnrollmentDate=DateTime.Parse("2069-06-09")},
+                 new Student{FirstMidName="Mel",LastName="Kosk",EnrollmentDate=DateTime.Parse("2069-06-09")},
                 new Student{FirstMidName="Mered",LastName="Alonso",EnrollmentDate=DateTime.Parse("2002-09-01")},
                 new Student{FirstMidName="Arturo",LastName="An",EnrollmentDate=DateTime.Parse("2003-09-01")},
                 new Student{FirstMidName="Gutis",LastName="Ganzales",EnrollmentDate=DateTime.Parse("2002-09-01")},
@@ -87,8 +89,8 @@ namespace ContosoUniversity.Data
             {
                 context.Enrollments.Add(enrollment);
             }
-            context.SaveChanges();
+            context.SaveChanges();*/
 
         }
-    }
+}
 }
