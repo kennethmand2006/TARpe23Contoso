@@ -54,22 +54,21 @@ namespace ContosoUniversity.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Instructor instructor, string selectedCourses)
         public async Task<IActionResult> Create(Instructor instructor/*, string? selectedCourses*/)
         {
-            if (selectedCourses == null)
-            {
-                instructor.CourseAssignments = new List<CourseAssignment>();
-                foreach (var course in selectedCourses)
-                {
-                    var courseToAdd = new CourseAssignment
-                    {
-                        InstructorID = instructor.ID,
-                        CourseID = course
-                    };
-                    instructor.CourseAssignments.Add(courseToAdd);
-                }
-            }
+            //if (selectedCourses == null)
+            //{
+            //    instructor.CourseAssignments = new List<CourseAssignment>();
+            //    foreach (var course in selectedCourses)
+            //    {
+            //        var courseToAdd = new CourseAssignment
+            //        {
+            //            InstructorID = instructor.ID,
+            //            CourseID = course
+            //        };
+            //        instructor.CourseAssignments.Add(courseToAdd);
+            //    }
+            //}
             //if (selectedCourses == null)
             //{
             //    instructor.CourseAssignments = new List<CourseAssignment>();

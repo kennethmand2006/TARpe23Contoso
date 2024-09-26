@@ -1,0 +1,58 @@
+﻿@model ContosoUniversity.Models.Department
+@{
+    ViewData["Title"] = "Create";
+
+}
+<h2>Create a new department</h2>
+<hr />
+<div class="col-md-4">
+    <div> class="col-md-4"
+        <from asp-action="Craete>"
+            <input type="hidden" asp-for="RowVersion" value="@Html.Raw("0")"/>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="from-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="from-controll"></input>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="from-group">
+                <label asp-for="Budget" class="control-label"></label>
+                <input asp-for="Budget" class="from-control" /></input>
+                <span asp-validation-for="Budget" class="text-danger"><</span>
+            </div>
+
+            <div class="from-group">
+                <label asp-for="StartDate" class="control-label"></label>
+                <input asp-for="StartDate" class="from-control" /></input>
+                <span asp-validation-for="StartDate" class="text-danger"><</span>
+            </div>
+
+
+            </div>   <div class="from-group">
+                <label asp-for="story" class="control-label"></label>
+                <input asp-for="story" class="from-control" /></input>
+                <span asp-validation-for="StartDate" class="text-danger"><</span>
+            </div>   
+
+            
+            </div>   <div class="from-group">
+                <label asp-for="InstructorID" class="control-label"></label>
+                <input asp-for="InstructorID" class="from-control" /></input>
+                <span asp-validation-for="StartDate" class="text-danger"><</span>
+            </div>
+            
+            </div>   <div class="from-group">
+                <label asp-for="StudentID" class="control-label"></label>
+                <input asp-for="StudentID" class="from-control" /></input>
+                <span asp-validation-for="StartDate" class="text-danger"><</span>
+            </div>
+            
+           
+
+            
+
+
+    </div>
+</div>

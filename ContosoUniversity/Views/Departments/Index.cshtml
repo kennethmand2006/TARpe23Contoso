@@ -1,0 +1,83 @@
+﻿@model IEnumerable<ContosoUniversity.Models.Department>
+
+@{
+
+    ViewData["Title"] = "Departments";
+
+}
+
+<h1>Departments</h1>
+
+<p>
+
+    <a asp-action="Create">Make a new department</a>
+
+</p>
+
+<table class="table">
+
+    <thead>
+
+        <tr>
+
+            <th> @Html.DisplayNameFor(model => model.Name) </th>
+
+            <th> @Html.DisplayNameFor(model => model.Adminstrator) </th>
+
+            <th> @Html.DisplayNameFor(model => model.story) </th>
+
+            <th> @Html.DisplayNameFor(model => model.Budget) </th>
+
+            <th> @Html.DisplayNameFor(model => model.StartDate) </th>
+
+            <th> @Html.DisplayNameFor(model => model.RowVersion) </th>
+
+            <th>Available actions:</th>
+
+        </tr>
+
+    </thead>
+
+
+
+    <tbody>
+
+        @foreach (var department in Model)
+
+        {
+
+            <tr>
+
+                <td> @Html.DisplayFor(modelItem => department.Name) </td>
+
+                <td> @Html.DisplayFor(modelItem => department.Adminstrator.FullName) </td>
+
+                <td> @Html.DisplayFor(modelItem => department.story) </td>
+
+                <td> @Html.DisplayFor(modelItem => department.Budget) </td>
+
+                <td> @Html.DisplayFor(modelItem => department.StartDate) </td>
+
+                <td> @Html.DisplayFor(modelItem => department.RowVersion) </td>
+
+                <td>
+
+                    <a asp-action="Details" asp-route-id="@department.DepartmentID" class="btn btn-dark">Details</a>
+
+                    <a asp-action="Edit" asp-route-id="@department.DepartmentID" class="btn btn-dark">Edit</a>
+
+                    <a asp-action="Edit Adminstrator" asp-route-id="@department.DepartmentID" class="btn btn-dark">Edit Admin</a>
+
+                    <a asp-action="Clone" asp-route-id="@department.DepartmentID" class="btn btn-dark">Clone</a>
+
+                    <a asp-action="Delete" asp-route-id="@department.DepartmentID" class="btn btn-dark">EVISCERATE</a>
+
+                </td>
+
+            </tr>
+
+        }
+
+    </tbody>
+
+</table>

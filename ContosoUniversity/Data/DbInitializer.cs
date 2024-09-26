@@ -15,7 +15,8 @@ namespace ContosoUniversity.Data
             {
                 return;
             }
-            context.Students.AddRange());
+            context.Students.AddRange();
+            
 
             //õpilaste object
            var students = new Student[]
@@ -89,7 +90,7 @@ namespace ContosoUniversity.Data
             {
                 context.Enrollments.Add(enrollment);
             }
-            context.SaveChanges();*/
+            context.SaveChanges();
 
         }
 }

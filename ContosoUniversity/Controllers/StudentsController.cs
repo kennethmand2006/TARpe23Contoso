@@ -179,6 +179,9 @@ namespace ContosoUniversity.Controllers
         }
         [HttpGet]
         public async Task<IActionResult> Clone([Bind("ID,LastName,FirstMidName,EnrollmentDate")] Student selectedStudent, int? id)
+        {
+            return View(selectedStudent);
+        }
 
         /// <summary>
         /// Asünkroonne Clone POST meetod, mis id järgi "Index" vaatest
