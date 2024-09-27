@@ -37,4 +37,24 @@ internal class Program
 
         app.Run();
     }
+    
+    private static void CreateDbIfNotExsists(IHost host)
+    {
+        using (var scope = host.Services.CreateScope())
+        {
+            var services = scope.ServiceProvider;
+            try
+            {
+                var context = services.GetRequiredService<ILogger<Program>>();
+                DbInitializer.Initialize(context);
+            }
+       
+            catch (Exception ex) 
+            {
+            var logger = services.GetRequiredService<ILogger<Program>>();
+                logger.LogError(ex, "Error ocureed while creating database");
+            }
+        }
+    }
+
 }
