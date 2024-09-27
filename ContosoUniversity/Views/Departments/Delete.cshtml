@@ -1,5 +1,15 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model YourNamespace.Models.Department
+
+<h2>Are you sure you want to delete this department?</h2>
+
+<div>
+    <h4>@Model.Name</h4>
+    <p>Budget: @Model.Budget</p>
+    <p>Start Date: @Model.StartDate.ToString("yyyy-MM-dd")</p>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="DepartmentID" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

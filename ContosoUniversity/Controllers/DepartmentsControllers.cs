@@ -58,5 +58,56 @@ namespace ContosoUniversity.Controllers
             ViewData["InsturctorsID"] = new SelectList(_context.Instructors, "ID", "FullName", department.InstructorID);
             return View(department);
         }
+        [HttpPost]
+        public async Task<IActionResult> Make(int id)
+        {
+            var existingDepartment = await _context.Departments.FindAsync(id);
+            if (existingDepartment == null)
+            {
+                return NotFound();
+            }
+
+            // BaseOn - loon uue osakonna olemasoleva põhjal
+            var newDepartment = new Department
+            {
+                Name = existingDepartment.Name + " - New",
+                Budget = existingDepartment.Budget,
+                StartDate = DateTime.Now
+                // Lisa veel omadusi kui vaja
+            };
+
+            _context.Departments.Add(newDepartment);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index)); // Tagasi loetellu
+        }
+        [HttpPost]
+        public async Task<IActionResult> MakeAndDeleteOld(int id)
+        {
+            var existingDepartment = await _context.Departments.FindAsync(id);
+            if (existingDepartment == null)
+            {
+                return NotFound();
+            }
+
+            // Loo uus osakond olemasoleva põhjal
+            var newDepartment = new Department
+            {
+                Name = existingDepartment.Name + " - New",
+                Budget = existingDepartment.Budget,
+                StartDate = DateTime.Now
+                // Lisa muud omadused vastavalt vajadusele
+            };
+
+            _context.Departments.Add(newDepartment);
+
+            // Kustuta vana osakond
+            _context.Departments.Remove(existingDepartment);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index)); // Tagasi nimekirja
+        }
+
     }
 }
