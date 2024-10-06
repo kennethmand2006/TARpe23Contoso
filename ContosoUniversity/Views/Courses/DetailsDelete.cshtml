@@ -1,0 +1,30 @@
+﻿@model ContosoUniversity.Models.Course
+
+<h1>Course Details</h1>
+
+<dl class="row">
+    <dt class="col-sm-2">Title</dt>
+    <dd class="col-sm-10">@Model.Title</dd>
+
+    <dt class="col-sm-2">Credits</dt>
+    <dd class="col-sm-10">@Model.Credits</dd>
+
+    <dt class="col-sm-2">Description</dt>
+    <dd class="col-sm-10">@Model.Description</dd>
+</dl>
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    @if (ViewBag.ActionType == "Details")
+    {
+        <a asp-action="Edit" asp-route-id="@Model.CourseID" class="btn btn-warning">Edit</a>
+        <a asp-action="Clone" asp-route-id="@Model.CourseID" class="btn btn-info">Clone</a>
+    }
+    else if (ViewBag.ActionType == "Delete")
+    {
+        <form asp-action="Delete" method="post">
+            <input type="hidden" asp-for="CourseID" />
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+    }
+</div>

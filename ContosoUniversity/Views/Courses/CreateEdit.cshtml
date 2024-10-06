@@ -1,0 +1,29 @@
+﻿@model ContosoUniversity.Models.Course
+
+@{
+    var isEdit = Model.CourseID != 0;
+    ViewData["Title"] = isEdit ? "Edit Course" : "Create Course";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="@((isEdit) ? "Edit" : "Create")">
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Credits"></label>
+        <input asp-for="Credits" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    @if (isEdit)
+    {
+        <a asp-action="Clone" asp-route-id="@Model.CourseID" class="btn btn-secondary">Clone</a>
+    }
+</form>

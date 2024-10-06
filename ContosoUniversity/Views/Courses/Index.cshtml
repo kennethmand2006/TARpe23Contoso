@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ContosoUniversity.Models.Course>
+
+<h1>Courses</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Course</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Credits</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var course in Model)
+        {
+            <tr>
+                <td>@course.Title</td>
+                <td>@course.Credits</td>
+                <td>@course.Description</td>
+                <td>
+                    <a asp-action="DetailsDelete" asp-route-id="@course.CourseID" asp-route-action="Details" class="btn btn-info">Details</a>
+                    <a asp-action="Edit" asp-route-id="@course.CourseID" class="btn btn-warning">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
